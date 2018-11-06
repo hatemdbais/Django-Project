@@ -1,0 +1,18 @@
+.myForm{
+    padding-left: 10px;
+    margin-left: auto;
+    padding-right: 10px;
+    margin-right: auto;
+}
+.jumbotron{
+    background: #8fb59c;
+    color: #ffffff;
+}
+table
+{
+    border-collapse: collapse;
+}
+table tr td
+{
+    border: 1px solid black!important;
+}
