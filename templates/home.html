@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block meta %}
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+{% endblock %}
+
+{% block icon %}
+<link rel="icon" type="image/ico" href="{% static '/img/linux.ico'%}">
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block active1 %}active{% endblock %}
+
+{% block content %}
+<div role="main" class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-12">
+				<img class="img-responsive" src="{% static '/img/Pythonlogo.png'%}" title="Python3">
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<h1>Python Web</h1>
+				<p class="lead">This is python web tutorial.</p>
+				<p>We are using django web and css javascript with bootstrap.</p>
+				<p class="lead">{{ current_date }}</p>
+				{% if request.user.is_authenticated and request.user.is_staff %}
+				<a class="btn btn-lg btn-outline-light" href="/admin/" target="_blank" role="button">admin &raquo;</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block form %}
+{% if request.user.is_authenticated %}
+<div class="col-sm-12">
+	<h1>You are logged in</h1>
+	{% if queryset %}
+	<h2>Welcome team</h2>
+	<table class="table">
+		<tr>
+			<td></td>
+			<td style="background:;">Full Name</td>
+			<td style="background:;">Email</td>
+			<td style="background:;">Created</td>
+		</tr>
+		{% for instance in queryset %}
+		<tr>
+			<td style="background:;">{{ forloop.counter }}</td>
+			<td style="background:;">{{ instance }}</td>
+			<td style="background:;">{{ instance.email }}</td>
+			<td style="background:;">{{ instance.timestamp|timesince }} ago</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+{% else %}
+</div>
+<div class="row myForm">
+    <div class="col-sm-6 col-md-3">
+        <h1 >{{title}}</h1>
+        <p class="lead">User Name: {{user}}</p>
+        <p class="lead">{{myName}}</p>
+        <form method="post" action="">{% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="SignUp" class="btn btn-outline-success my-2 my-sm-0">
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

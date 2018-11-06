@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block meta %}
+<link rel="stylesheet" href="{% static '/css/about.css' %}">
+{% endblock %}
+
+{% block title %}About{% endblock %}
+
+{% block active2 %}active{% endblock %}
+
+{% block content %}
+<!--<div class="col-md-12">-->
+    <!--<p class="lead time">{{current_date}}</p>-->
+<!--</div>-->
+<div class="row abt">
+    <div class="col-sm-6 offset-sm-3">
+        <h1>About me</h1>
+        <a class="btn btn-light" href="https://www.facebook.com/hatem.dbais" target="_blank" role="button" style="background:#4267b2;color:#fff;">Facebook  <i class="fab fa-facebook fa-lg"></i></a>
+        <a class="btn btn-dark" href="https://github.com/hatemdbais" target="_blank" role="button">GitHub  <i class="fab fa-github fa-lg"></i></a>
+        <a class="btn btn-light" href="mailto:htmdbais@gmail.com" role="button" style="background:#c83d30;color:#fff;">Gmail  <i class="fas fa-envelope-square fa-lg"></i></a>
+    </div>
+</div>
+{% endblock %}

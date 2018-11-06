@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block meta %}
+<link rel="stylesheet" href="{% static '/css/forms.css' %}">
+{% endblock %}
+
+{% block icon %}
+<link rel="icon" type="image/ico" href="{% static '/img/boot.ico'%}">
+{% endblock %}
+
+{% block title %}Contact{% endblock %}
+
+{% block active3 %}active{% endblock %}
+
+{% block content %}
+<div class="row title">
+    <div class="col-sm-12">
+        <h1>{{ title }}</h1>
+    </div>
+</div>
+<div class="row myForm">
+    <div class="col-sm-8 col-md-3">
+        <form method="post" action="">{% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" value="Submit" class="btn btn-outline-success my-2 my-sm-0">
+        </form>
+    </div>
+</div>
+{% endblock %}
